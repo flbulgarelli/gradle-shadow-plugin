@@ -1,0 +1,28 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+apply plugin: 'eclipse'
+
+group = 'com.zauberlabs.gradle.plugins'
+version = '1.0-SNAPSHOT'
+
+dependencies {
+  compile gradleApi()
+  groovy localGroovy()
+}
+
+repositories {
+  mavenCentral()
+  mavenLocal()
+}
+
+uploadArchives {
+  repositories {
+    mavenDeployer {
+      snapshotRepository(url: "https://repo1.zauberlabs.com/zauber/code/snapshots") {
+        authentication(userName: zauberlabsUsername, password: zauberlabsPassword)
+      }
+      repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/")
+    }
+  }
+}
+

@@ -20,22 +20,18 @@ import org.gradle.api.*
 class ShadowPlugin implements Plugin<Project> {
 
   def void apply(Project project) {
-    project.tasks.withType(ShadowTask) { task ->
-      task.conventionMapping.input = { project.input }
+    project.task('encrypt-password') << {
+      println shadow(project.password)
     }
-    project.tasks.withType(RevealTask) { task ->
-      task.conventionMapping.input = { project.input }
-    }
-
     project.metaClass.reveal = { intput ->  reveal(intput) }
   }
 
   static shadow(input) {
-    return new DefaultPlexusCipher().encryptAndDecorate(input, passphrase())
+    new DefaultPlexusCipher().encryptAndDecorate(input, passphrase())
   }
 
   static reveal(input) {
-    return new DefaultPlexusCipher().decryptDecorated(input, passphrase())
+    new DefaultPlexusCipher().decryptDecorated(input, passphrase())
   }
 
   static passphrase() {

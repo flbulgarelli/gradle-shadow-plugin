@@ -15,4 +15,5 @@ class ShadowPluginTest {
     
   	assert 'foobar' == project.reveal(ShadowPlugin.shadow('foobar'))
   }
+  
 }

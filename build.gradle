@@ -8,6 +8,7 @@ version = '1.0-SNAPSHOT'
 dependencies {
   compile gradleApi()
   groovy localGroovy()
+  compile 'org.sonatype.plexus:plexus-cipher:1.7'
 }
 
 repositories {

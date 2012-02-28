@@ -13,7 +13,6 @@ class ShadowPluginTest {
     Project project = ProjectBuilder.builder().build()
     project.apply plugin: 'shadow'
     
-  	assert 'foobar' == project.reveal('foobar')
-    
+  	assert 'foobar' == project.reveal(ShadowPlugin.shadow('foobar'))
   }
 }

@@ -20,7 +20,7 @@ import org.gradle.api.*
 class ShadowPlugin implements Plugin<Project> {
 
   def void apply(Project project) {
-    project.task('encrypt-password') << {
+    project.task('shadow') << {
       println shadow(project.password)
     }
     project.metaClass.reveal = { intput ->  reveal(intput) }
